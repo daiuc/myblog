@@ -7,7 +7,7 @@ project:
       browser: true
 
 website:
-  title: 'The Ciao Chao'
+  title: 'Ciao Chao'
   site-url: www.ciaodaily.com
   navbar:
     right:

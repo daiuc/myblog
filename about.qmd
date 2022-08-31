@@ -20,13 +20,45 @@ title-block-banner-color: 'light'
 ### Chao Dai | PhD Candidate
 
 
-#### *Genetics, Genomics and Systems Biology <br> University of Chicago*
+*Genetics, Genomics and Systems Biology <br> University of Chicago*
 
 ---
 
 
-Deserunt magna tempor sunt esse proident. Pariatur incididunt veniam sunt veniam ullamco officia adipisicing cillum veniam exercitation excepteur mollit pariatur esse. Et proident adipisicing id tempor ut ullamco elit est cillum aliqua aliqua anim.
+:::: {.columns}
+
+::: {.column width="75%"}
+Research Associate <br>
+*University of Chicago*
+:::
+
+::: {.column width="25%" align="right"}
+09/20 - present <br>
+*Chicago, IL*
+
+:::
+:::: 
+
+Reprehenderit sint non aliquip enim fugiat magna ex quis id. Aute consectetur consequat eiusmod cillum ullamco et irure consequat esse. Sint occaecat sint incididunt ea ullamco sit velit. Labore officia culpa culpa ea. Excepteur id consequat aliqua veniam labore ad enim nulla. Ad elit Lorem excepteur excepteur incididunt.
+
+
+:::: {.columns}
+
+::: {.column width="75%"}
+Research Associate <br>
+*New York Genome Center | New York University*
+:::
+
+
+::: {.column width="25%" align="right"}
+08/18 - 08/20 <br>
+*New York, NY*
+
+:::
+:::: 
 
 Sint ex eu proident enim. Lorem sint veniam tempor mollit velit sunt exercitation sit laboris velit nulla in laborum non. Sit sunt reprehenderit labore fugiat consequat anim. Cillum consequat eiusmod velit id occaecat tempor ullamco proident ut occaecat.
 
-Reprehenderit sint non aliquip enim fugiat magna ex quis id. Aute consectetur consequat eiusmod cillum ullamco et irure consequat esse. Sint occaecat sint incididunt ea ullamco sit velit. Labore officia culpa culpa ea. Excepteur id consequat aliqua veniam labore ad enim nulla. Ad elit Lorem excepteur excepteur incididunt.
+
+
+*And more...*

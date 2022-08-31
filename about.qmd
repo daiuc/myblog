@@ -19,8 +19,16 @@ title-block-banner-color: 'light'
 
 ### Chao Dai | PhD Candidate
 
+:::: {.columns}
 
-*Genetics, Genomics and Systems Biology <br> University of Chicago*
+::: {.column width="65%"}
+*Genetics, Genomics and Systems Biology*
+:::
+
+::: {.column width="35%"}
+*University of Chicago*
+:::
+::::
 
 ---
 

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>The Ciao Chao</title>
+<link>www.ciaodaily.com/index.html</link>
+<atom:link href="www.ciaodaily.com/index.xml" rel="self" type="application/rss+xml"/>
+<description></description>
+<generator>quarto-1.2.8</generator>
+<lastBuildDate>Sat, 27 Aug 2022 05:00:00 GMT</lastBuildDate>
+<item>
+  <title>Welcome To My Blog</title>
+  <dc:creator>Chao</dc:creator>
+  <link>www.ciaodaily.com/posts/welcome/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>This is the first post in a Quarto blog. Welcome!</p>
+<p><img src="www.ciaodaily.com/posts/welcome/olive.jpg" class="img-fluid"></p>
+<p>Since this post doesn’t specify an explicit <code>image</code>, the first image in the post will be used in the listing page of posts.</p>
+<section id="header-1" class="level2">
+<h2 class="anchored" data-anchor-id="header-1">Header 1</h2>
+</section>
+<section id="header-2" class="level2">
+<h2 class="anchored" data-anchor-id="header-2">Header 2</h2>
+
+
+</section>
+
+ ]]></description>
+  <category>news</category>
+  <guid>www.ciaodaily.com/posts/welcome/index.html</guid>
+  <pubDate>Sat, 27 Aug 2022 05:00:00 GMT</pubDate>
+  <media:content url="www.ciaodaily.com/posts/welcome/olive.jpg" medium="image" type="image/jpeg"/>
+</item>
+</channel>
+</rss>

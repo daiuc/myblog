@@ -1,9 +1,11 @@
 ---
-title: "Ciao Chao"
+title: "*\"Good questions outrank easy answers.\" <br> Paul Samuelson*"
 listing:
   contents: posts
   sort: "date desc"
   type: default
+  page-size: 20
+  image-placeholder: '../assets/olive.jpg'
   categories: true
   sort-ui: false
   filter-ui: false

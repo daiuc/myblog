@@ -6,3 +6,7 @@ freeze: auto
 
 # Enable banner style title blocks
 title-block-banner: true
+
+toc: true
+toc-depth: 3
+df-print: paged

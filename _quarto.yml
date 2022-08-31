@@ -7,6 +7,8 @@ project:
       browser: true
 
 website:
+  title: 'The Ciao Chao'
+  site-url: www.ciaodaily.com
   navbar:
     right:
       - text: Blog
@@ -18,12 +20,17 @@ website:
         href: https://twitter.com/chaodai
     search: true
     logo: assets/logo.png
+
+
 format:
   html:
     theme: 
       light: cosmo
       dark: slate
     css: styles.css
+    link-external-icon: true
+    execute:
+      freeze: auto
 
 
 

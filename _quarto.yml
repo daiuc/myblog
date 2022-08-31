@@ -1,0 +1,29 @@
+project:
+  type: website
+  output-dir: docs
+  render: ["*.qmd", "**/*.qmd"]
+  preview: 
+      port: 6543
+      browser: true
+
+website:
+  navbar:
+    right:
+      - text: Blog
+        href: index.qmd
+      - about.qmd
+      - icon: github
+        href: https://github.com/daiuc
+      - icon: twitter
+        href: https://twitter.com/chaodai
+    search: true
+    logo: assets/logo.png
+format:
+  html:
+    theme: 
+      light: cosmo
+      dark: slate
+    css: styles.css
+
+
+

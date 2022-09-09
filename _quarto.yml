@@ -33,7 +33,7 @@ format:
     link-external-icon: false
     execute:
       freeze: auto
-    include-after-body: 
+    include-before-body: 
       file: google_analytics_tag
 
 

@@ -16,6 +16,15 @@
   <dc:creator>Chao</dc:creator>
   <link>www.ciaodaily.com/posts/welcome/index.html</link>
   <description><![CDATA[ 
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-TRNDW5PZV1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TRNDW5PZV1');
+</script>
 
 
 

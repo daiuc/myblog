@@ -9,7 +9,7 @@ project:
 website:
   title: 'Ciao Chao'
   site-url: www.ciaodaily.com
-  google-analytics: "G-0C4YPCVPSV"
+  google-analytics: "G-TRNDW5PZV1"
   navbar:
     right:
       - text: Blog
@@ -33,6 +33,7 @@ format:
     link-external-icon: false
     execute:
       freeze: auto
-
+    include-after-body: 
+      file: google_analytics_tag
 
 

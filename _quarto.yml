@@ -9,6 +9,7 @@ project:
 website:
   title: 'Ciao Chao'
   site-url: www.ciaodaily.com
+  google-analytics: "G-0C4YPCVPSV"
   navbar:
     right:
       - text: Blog
@@ -20,6 +21,7 @@ website:
         href: https://twitter.com/chaodai
     search: true
     logo: assets/logo.png
+  
 
 
 format:

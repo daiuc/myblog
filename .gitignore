@@ -11,3 +11,5 @@ _site/**
 /.quarto/
 **test*
 **tmp*
+docs/CNAME
+

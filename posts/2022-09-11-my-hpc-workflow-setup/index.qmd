@@ -8,14 +8,14 @@ image: "ZmZEkO-pb7M.jpg"
 
 This workflow aims to achive remote data analysis on high performance computing clusters. Main tools involved are:
 
-* `code-server`
-* `singularity` and `docker` image
-* `snakemake`
-* `conda`
+-   `code-server`
+-   `singularity` and `docker` image
+-   `snakemake`
+-   `conda`
 
 ### Set up code-server
 
-The purpose of code-server is to enable remote development. Once set up, you can run `vscode` from browser. 
+The purpose of code-server is to enable remote development. Once set up, you can run `vscode` from browser.
 
 ### `conda` and `snakemake`
 
@@ -23,27 +23,28 @@ Install `conda` to create appropriate environment. For instance, I created a `sm
 
 ### `singularity` and `docker` image
 
-I built a docker image on my mac based on the [`rocker/rstudio`](https://hub.docker.com/r/rocker/rstudio) docker image. Because `docker` requires `root`, it is not available on HPCs. Thus I built a `sif` image using `singularity` (now rebranded as `apptainer`). The purpose of this container is to run my own `rstudio server` on HPC. 
+I built a docker image on my mac based on the [`rocker/rstudio`](https://hub.docker.com/r/rocker/rstudio) docker image. Because `docker` requires `root`, it is not available on HPCs. Thus I built a `sif` image using `singularity` (now rebranded as `apptainer`). The purpose of this container is to run my own `rstudio server` on HPC.
 
-I used `singularity` to bind `$HOME` and `scratch` directory. When running the container, instead of using the r binary in the container, I used the r binary in `smk` environment. This ensures that rstudio run in the container leverages the same R and R library. 
+I used `singularity` to bind `$HOME` and `scratch` directory. When running the container, instead of using the r binary in the container, I used the r binary in `smk` environment. This ensures that rstudio run in the container leverages the same R and R library.
 
 ### Start `rstudio-server` and `jupyter lab`
 
 In a `sbatch` script, I essentially run these commands:
 
-*   first, activate `smk` environment
-*   second, start `jupyter lab`, note this is run directly on compute node
-*   finally, start `singularity` container and run `rstudio`. Note `rstudio` is run inside a container on the compute node
+-   first, activate `smk` environment
+-   second, start `jupyter lab`, note this is run directly on compute node
+-   finally, start `singularity` container and run `rstudio`. Note `rstudio` is run inside a container on the compute node
 
 Note, since compute node is behind firewall, I need to access jupyter and rstudio servers via VPN or port forwarding.
 
 ### Typical workflow
 
-After the set up, the typical workflow works like this: 
+After the set up, the typical workflow works like this:
 
-1.    SSH into login node, and spin up `code-server`. Note this step is no longer required once the server is up and running.
-2.    Access `vscode` via the `code-server` URL on the login node.
-3.    Submit the `sbatch` script to spin up both `jupyter lab` and `rstudio` servers on the same compute node
-4.    To access `jupyter` and `rstudio` there are two options:
-    1.    VPN
-    2.    port-forward using SSH or vscode desktop app.
+1.  SSH into login node, and spin up `code-server`. Note this step is no longer required once the server is up and running.
+2.  Access `vscode` via the `code-server` URL on the login node.
+3.  Submit the `sbatch` script to spin up both `jupyter lab` and `rstudio` servers on the same compute node
+4.  To access `jupyter` and `rstudio` there are two options:
+    1.  VPN
+
+    2.  port-forward using SSH or vscode desktop app.

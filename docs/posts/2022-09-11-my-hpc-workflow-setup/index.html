@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Chao">
+<meta name="dcterms.date" content="2022-08-27">
 
-<title>Ciao Chao - “Good questions outrank easy answers.”  Paul Samuelson</title>
+<title>Ciao Chao - My HPC workflow setup</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,26 +25,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -62,35 +62,6 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-TRNDW5PZV1"></script>
 
 <script type="text/javascript">
@@ -101,10 +72,9 @@ gtag('js', new Date());
 gtag('config', 'G-TRNDW5PZV1', { 'anonymize_ip': true});
 </script>
 
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<link rel="stylesheet" href="styles.css">
-<link rel="alternate" type="application/rss+xml" title="Ciao Chao" href="index.xml"></head>
+<link rel="stylesheet" href="../../styles.css">
+</head>
 
 <body class="nav-fixed">
 
@@ -113,10 +83,10 @@ gtag('config', 'G-TRNDW5PZV1', { 'anonymize_ip': true});
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./assets/logo.png" alt="" class="navbar-logo">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/logo.png" alt="" class="navbar-logo">
     </a>
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Ciao Chao</span>
     </a>
   </div>
@@ -126,10 +96,10 @@ gtag('config', 'G-TRNDW5PZV1', { 'anonymize_ip': true});
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page">Blog</a>
+    <a class="nav-link" href="../../index.html">Blog</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html">About me</a>
+    <a class="nav-link" href="../../about.html">About me</a>
   </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/daiuc"><i class="bi bi-github" role="img">
@@ -153,27 +123,56 @@ gtag('config', 'G-TRNDW5PZV1', { 'anonymize_ip': true});
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title"><em>“Good questions outrank easy answers.” <br> Paul Samuelson</em></h1>
-                      </div>
+    <div class="quarto-title column-body">
+      <h1 class="title">My HPC workflow setup</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">tips</div>
+                <div class="quarto-category">data science</div>
+                <div class="quarto-category">python</div>
+                <div class="quarto-category">jupyter</div>
+                <div class="quarto-category">rstudio</div>
+              </div>
+                  </div>
   </div>
     
   
   <div class="quarto-title-meta">
 
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Chao </p>
+            </div>
+    </div>
       
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">August 27, 2022</p>
+      </div>
+    </div>
       
     </div>
     
   
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(2)</span></div><div class="category" data-category="data science">data science <span class="quarto-category-count">(1)</span></div><div class="category" data-category="jupyter">jupyter <span class="quarto-category-count">(1)</span></div><div class="category" data-category="news">news <span class="quarto-category-count">(1)</span></div><div class="category" data-category="python">python <span class="quarto-category-count">(1)</span></div><div class="category" data-category="rstudio">rstudio <span class="quarto-category-count">(1)</span></div><div class="category" data-category="tips">tips <span class="quarto-category-count">(1)</span></div></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#set-up-code-server" id="toc-set-up-code-server" class="nav-link active" data-scroll-target="#set-up-code-server">Set up code-server</a></li>
+  <li><a href="#conda-and-snakemake" id="toc-conda-and-snakemake" class="nav-link" data-scroll-target="#conda-and-snakemake"><code>conda</code> and <code>snakemake</code></a></li>
+  <li><a href="#singularity-and-docker-image" id="toc-singularity-and-docker-image" class="nav-link" data-scroll-target="#singularity-and-docker-image"><code>singularity</code> and <code>docker</code> image</a></li>
+  <li><a href="#start-rstudio-server-and-jupyter-lab" id="toc-start-rstudio-server-and-jupyter-lab" class="nav-link" data-scroll-target="#start-rstudio-server-and-jupyter-lab">Start <code>rstudio-server</code> and <code>jupyter lab</code></a></li>
+  <li><a href="#typical-workflow" id="toc-typical-workflow" class="nav-link" data-scroll-target="#typical-workflow">Typical workflow</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 <!-- Google tag (gtag.js) -->
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-TRNDW5PZV1"></script>
 <script>
@@ -187,102 +186,50 @@ gtag('config', 'G-TRNDW5PZV1', { 'anonymize_ip': true});
 
 
 
-<section id="welcome" class="level2">
-<h2 class="anchored" data-anchor-id="welcome">Welcome!</h2>
-
+<p>This workflow aims to achive remote data analysis on high performance computing clusters. Main tools involved are:</p>
+<ul>
+<li><code>code-server</code></li>
+<li><code>singularity</code> and <code>docker</code> image</li>
+<li><code>snakemake</code></li>
+<li><code>conda</code></li>
+</ul>
+<section id="set-up-code-server" class="level3">
+<h3 class="anchored" data-anchor-id="set-up-code-server">Set up code-server</h3>
+<p>The purpose of code-server is to enable remote development. Once set up, you can run <code>vscode</code> from browser.</p>
+</section>
+<section id="conda-and-snakemake" class="level3">
+<h3 class="anchored" data-anchor-id="conda-and-snakemake"><code>conda</code> and <code>snakemake</code></h3>
+<p>Install <code>conda</code> to create appropriate environment. For instance, I created a <code>smk</code> environment and installed <code>python 3.9</code>, <code>jupyterlab</code>, <code>r-base 4.1.0</code> and <code>snakemake 6.12.3</code></p>
+</section>
+<section id="singularity-and-docker-image" class="level3">
+<h3 class="anchored" data-anchor-id="singularity-and-docker-image"><code>singularity</code> and <code>docker</code> image</h3>
+<p>I built a docker image on my mac based on the <a href="https://hub.docker.com/r/rocker/rstudio"><code>rocker/rstudio</code></a> docker image. Because <code>docker</code> requires <code>root</code>, it is not available on HPCs. Thus I built a <code>sif</code> image using <code>singularity</code> (now rebranded as <code>apptainer</code>). The purpose of this container is to run my own <code>rstudio server</code> on HPC.</p>
+<p>I used <code>singularity</code> to bind <code>$HOME</code> and <code>scratch</code> directory. When running the container, instead of using the r binary in the container, I used the r binary in <code>smk</code> environment. This ensures that rstudio run in the container leverages the same R and R library.</p>
+</section>
+<section id="start-rstudio-server-and-jupyter-lab" class="level3">
+<h3 class="anchored" data-anchor-id="start-rstudio-server-and-jupyter-lab">Start <code>rstudio-server</code> and <code>jupyter lab</code></h3>
+<p>In a <code>sbatch</code> script, I essentially run these commands:</p>
+<ul>
+<li>first, activate <code>smk</code> environment</li>
+<li>second, start <code>jupyter lab</code>, note this is run directly on compute node</li>
+<li>finally, start <code>singularity</code> container and run <code>rstudio</code>. Note <code>rstudio</code> is run inside a container on the compute node</li>
+</ul>
+<p>Note, since compute node is behind firewall, I need to access jupyter and rstudio servers via VPN or port forwarding.</p>
+</section>
+<section id="typical-workflow" class="level3">
+<h3 class="anchored" data-anchor-id="typical-workflow">Typical workflow</h3>
+<p>After the set up, the typical workflow works like this:</p>
+<ol type="1">
+<li>SSH into login node, and spin up <code>code-server</code>. Note this step is no longer required once the server is up and running.</li>
+<li>Access <code>vscode</code> via the <code>code-server</code> URL on the login node.</li>
+<li>Submit the <code>sbatch</code> script to spin up both <code>jupyter lab</code> and <code>rstudio</code> servers on the same compute node</li>
+<li>To access <code>jupyter</code> and <code>rstudio</code> there are two options: 1. VPN 2. port-forward using SSH or vscode desktop app.</li>
+</ol>
 
 
 </section>
 
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="tips,data science,python,jupyter,rstudio" data-listing-date-sort="1661576400000" data-listing-file-modified-sort="1662915154035" data-listing-reading-time-sort="1.715">
-<div class="thumbnail">
-<p><a href="./posts/2022-09-11-my-hpc-workflow-setup/index.html"> <img src="https://unsplash.com/photos/ZmZEkO-pb7M" class="thumnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/2022-09-11-my-hpc-workflow-setup/index.html">
-<h3 class="no-anchor listing-title">
-My HPC workflow setup
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('tips'); return false;">
-tips
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('data science'); return false;">
-data science
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('python'); return false;">
-python
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('jupyter'); return false;">
-jupyter
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('rstudio'); return false;">
-rstudio
-</div>
-</div>
-<a href="./posts/2022-09-11-my-hpc-workflow-setup/index.html">
-<div class="listing-description">
-This workflow aims to achive remote data analysis on high performance computing clusters. Main tools involved are:
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/2022-09-11-my-hpc-workflow-setup/index.html">
-<div class="listing-date">
-Aug 27, 2022
-</div>
-<div class="listing-author">
-Chao
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="news" data-listing-date-sort="1661576400000" data-listing-file-modified-sort="1661921682109" data-listing-reading-time-sort="0.17">
-<div class="thumbnail">
-<p><a href="./posts/welcome/index.html"> <img src="./posts/welcome/olive.jpg" class="thumnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/welcome/index.html">
-<h3 class="no-anchor listing-title">
-Welcome To My Blog
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('news'); return false;">
-news
-</div>
-</div>
-<a href="./posts/welcome/index.html">
-<div class="listing-description">
-This is the first post in a Quarto blog. Welcome!
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/welcome/index.html">
-<div class="listing-date">
-Aug 27, 2022
-</div>
-<div class="listing-author">
-Chao
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

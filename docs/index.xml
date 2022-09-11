@@ -12,6 +12,77 @@
 <generator>quarto-1.2.8</generator>
 <lastBuildDate>Sat, 27 Aug 2022 05:00:00 GMT</lastBuildDate>
 <item>
+  <title>My HPC workflow setup</title>
+  <dc:creator>Chao</dc:creator>
+  <link>www.ciaodaily.com/posts/2022-09-11-my-hpc-workflow-setup/index.html</link>
+  <description><![CDATA[ 
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-TRNDW5PZV1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TRNDW5PZV1');
+</script>
+
+
+
+
+<p>This workflow aims to achive remote data analysis on high performance computing clusters. Main tools involved are:</p>
+<ul>
+<li><code>code-server</code></li>
+<li><code>singularity</code> and <code>docker</code> image</li>
+<li><code>snakemake</code></li>
+<li><code>conda</code></li>
+</ul>
+<section id="set-up-code-server" class="level3">
+<h3 class="anchored" data-anchor-id="set-up-code-server">Set up code-server</h3>
+<p>The purpose of code-server is to enable remote development. Once set up, you can run <code>vscode</code> from browser.</p>
+</section>
+<section id="conda-and-snakemake" class="level3">
+<h3 class="anchored" data-anchor-id="conda-and-snakemake"><code>conda</code> and <code>snakemake</code></h3>
+<p>Install <code>conda</code> to create appropriate environment. For instance, I created a <code>smk</code> environment and installed <code>python 3.9</code>, <code>jupyterlab</code>, <code>r-base 4.1.0</code> and <code>snakemake 6.12.3</code></p>
+</section>
+<section id="singularity-and-docker-image" class="level3">
+<h3 class="anchored" data-anchor-id="singularity-and-docker-image"><code>singularity</code> and <code>docker</code> image</h3>
+<p>I built a docker image on my mac based on the <a href="https://hub.docker.com/r/rocker/rstudio"><code>rocker/rstudio</code></a> docker image. Because <code>docker</code> requires <code>root</code>, it is not available on HPCs. Thus I built a <code>sif</code> image using <code>singularity</code> (now rebranded as <code>apptainer</code>). The purpose of this container is to run my own <code>rstudio server</code> on HPC.</p>
+<p>I used <code>singularity</code> to bind <code>$HOME</code> and <code>scratch</code> directory. When running the container, instead of using the r binary in the container, I used the r binary in <code>smk</code> environment. This ensures that rstudio run in the container leverages the same R and R library.</p>
+</section>
+<section id="start-rstudio-server-and-jupyter-lab" class="level3">
+<h3 class="anchored" data-anchor-id="start-rstudio-server-and-jupyter-lab">Start <code>rstudio-server</code> and <code>jupyter lab</code></h3>
+<p>In a <code>sbatch</code> script, I essentially run these commands:</p>
+<ul>
+<li>first, activate <code>smk</code> environment</li>
+<li>second, start <code>jupyter lab</code>, note this is run directly on compute node</li>
+<li>finally, start <code>singularity</code> container and run <code>rstudio</code>. Note <code>rstudio</code> is run inside a container on the compute node</li>
+</ul>
+<p>Note, since compute node is behind firewall, I need to access jupyter and rstudio servers via VPN or port forwarding.</p>
+</section>
+<section id="typical-workflow" class="level3">
+<h3 class="anchored" data-anchor-id="typical-workflow">Typical workflow</h3>
+<p>After the set up, the typical workflow works like this:</p>
+<ol type="1">
+<li>SSH into login node, and spin up <code>code-server</code>. Note this step is no longer required once the server is up and running.</li>
+<li>Access <code>vscode</code> via the <code>code-server</code> URL on the login node.</li>
+<li>Submit the <code>sbatch</code> script to spin up both <code>jupyter lab</code> and <code>rstudio</code> servers on the same compute node</li>
+<li>To access <code>jupyter</code> and <code>rstudio</code> there are two options: 1. VPN 2. port-forward using SSH or vscode desktop app.</li>
+</ol>
+
+
+</section>
+
+ ]]></description>
+  <category>tips</category>
+  <category>data science</category>
+  <category>python</category>
+  <category>jupyter</category>
+  <category>rstudio</category>
+  <guid>www.ciaodaily.com/posts/2022-09-11-my-hpc-workflow-setup/index.html</guid>
+  <pubDate>Sat, 27 Aug 2022 05:00:00 GMT</pubDate>
+  <media:content url="https://unsplash.com/photos/ZmZEkO-pb7M" medium="image"/>
+</item>
+<item>
   <title>Welcome To My Blog</title>
   <dc:creator>Chao</dc:creator>
   <link>www.ciaodaily.com/posts/welcome/index.html</link>

@@ -6,5 +6,4 @@ categories: ["linux", "zsh", "vim", "tmux"]
 image: '6RTn6HZD.jpg'
 ---
 
-
 Set up of zsh, vim, and tmux...coming soon.

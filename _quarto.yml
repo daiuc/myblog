@@ -31,6 +31,7 @@ format:
       dark: slate
     css: styles.css
     link-external-icon: false
+    image-placeholder: 'olive.jpg'
     execute:
       freeze: auto
     include-before-body: 

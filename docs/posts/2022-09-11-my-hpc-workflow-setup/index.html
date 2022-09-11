@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Chao">
-<meta name="dcterms.date" content="2022-08-27">
+<meta name="dcterms.date" content="2022-09-11">
 
 <title>Ciao Chao - My HPC workflow setup</title>
 <style>
@@ -148,7 +148,7 @@ gtag('config', 'G-TRNDW5PZV1', { 'anonymize_ip': true});
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">August 27, 2022</p>
+        <p class="date">September 11, 2022</p>
       </div>
     </div>
       
@@ -220,13 +220,13 @@ gtag('config', 'G-TRNDW5PZV1', { 'anonymize_ip': true});
 <h3 class="anchored" data-anchor-id="typical-workflow">Typical workflow</h3>
 <p>After the set up, the typical workflow works like this:</p>
 <ol type="1">
-<li>SSH into login node, and spin up <code>code-server</code>. Note this step is no longer required once the server is up and running.</li>
-<li>Access <code>vscode</code> via the <code>code-server</code> URL on the login node.</li>
-<li>Submit the <code>sbatch</code> script to spin up both <code>jupyter lab</code> and <code>rstudio</code> servers on the same compute node</li>
-<li>To access <code>jupyter</code> and <code>rstudio</code> there are two options:
+<li><p>SSH into login node, and spin up <code>code-server</code>. Note this step is no longer required once the server is up and running.</p></li>
+<li><p>Access <code>vscode</code> via the <code>code-server</code> URL on the login node.</p></li>
+<li><p>Submit the <code>sbatch</code> script to spin up both <code>jupyter lab</code> and <code>rstudio</code> servers on the same compute node</p></li>
+<li><p>To access <code>jupyter</code> and <code>rstudio</code> there are two options:</p>
 <ol type="1">
-<li><p>VPN</p></li>
-<li><p>port-forward using SSH or vscode desktop app.</p></li>
+<li>VPN</li>
+<li>port-forward using SSH or vscode desktop app.</li>
 </ol></li>
 </ol>
 

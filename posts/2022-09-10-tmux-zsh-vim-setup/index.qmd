@@ -1,0 +1,10 @@
+---
+title: "Linux terminal set up - zsh, vim, and tmux"
+author: "Chao"
+date: "2022-09-10"
+categories: ["linux", "zsh", "vim", "tmux"]
+image: '6RTn6HZD.jpg'
+---
+
+
+Set up of zsh, vim, and tmux...coming soon.

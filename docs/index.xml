@@ -10,7 +10,7 @@
 <atom:link href="www.ciaodaily.com/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.2.8</generator>
-<lastBuildDate>Sat, 27 Aug 2022 05:00:00 GMT</lastBuildDate>
+<lastBuildDate>Sun, 11 Sep 2022 05:00:00 GMT</lastBuildDate>
 <item>
   <title>My HPC workflow setup</title>
   <dc:creator>Chao</dc:creator>
@@ -63,13 +63,13 @@
 <h3 class="anchored" data-anchor-id="typical-workflow">Typical workflow</h3>
 <p>After the set up, the typical workflow works like this:</p>
 <ol type="1">
-<li>SSH into login node, and spin up <code>code-server</code>. Note this step is no longer required once the server is up and running.</li>
-<li>Access <code>vscode</code> via the <code>code-server</code> URL on the login node.</li>
-<li>Submit the <code>sbatch</code> script to spin up both <code>jupyter lab</code> and <code>rstudio</code> servers on the same compute node</li>
-<li>To access <code>jupyter</code> and <code>rstudio</code> there are two options:
+<li><p>SSH into login node, and spin up <code>code-server</code>. Note this step is no longer required once the server is up and running.</p></li>
+<li><p>Access <code>vscode</code> via the <code>code-server</code> URL on the login node.</p></li>
+<li><p>Submit the <code>sbatch</code> script to spin up both <code>jupyter lab</code> and <code>rstudio</code> servers on the same compute node</p></li>
+<li><p>To access <code>jupyter</code> and <code>rstudio</code> there are two options:</p>
 <ol type="1">
-<li><p>VPN</p></li>
-<li><p>port-forward using SSH or vscode desktop app.</p></li>
+<li>VPN</li>
+<li>port-forward using SSH or vscode desktop app.</li>
 </ol></li>
 </ol>
 
@@ -83,8 +83,39 @@
   <category>jupyter</category>
   <category>rstudio</category>
   <guid>www.ciaodaily.com/posts/2022-09-11-my-hpc-workflow-setup/index.html</guid>
-  <pubDate>Sat, 27 Aug 2022 05:00:00 GMT</pubDate>
+  <pubDate>Sun, 11 Sep 2022 05:00:00 GMT</pubDate>
   <media:content url="www.ciaodaily.com/posts/2022-09-11-my-hpc-workflow-setup/ZmZEkO-pb7M.jpg" medium="image" type="image/jpeg"/>
+</item>
+<item>
+  <title>Linux terminal set up - zsh, vim, and tmux</title>
+  <dc:creator>Chao</dc:creator>
+  <link>www.ciaodaily.com/posts/2022-09-10-tmux-zsh-vim-setup/index.html</link>
+  <description><![CDATA[ 
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-TRNDW5PZV1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TRNDW5PZV1');
+</script>
+
+
+
+
+<p>Set up of zsh, vim, and tmux…coming soon.</p>
+
+
+
+ ]]></description>
+  <category>linux</category>
+  <category>zsh</category>
+  <category>vim</category>
+  <category>tmux</category>
+  <guid>www.ciaodaily.com/posts/2022-09-10-tmux-zsh-vim-setup/index.html</guid>
+  <pubDate>Sat, 10 Sep 2022 05:00:00 GMT</pubDate>
+  <media:content url="www.ciaodaily.com/posts/2022-09-10-tmux-zsh-vim-setup/6RTn6HZD.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>Welcome To My Blog</title>

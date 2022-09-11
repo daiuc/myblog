@@ -1,7 +1,7 @@
 ---
 title: "My HPC workflow setup"
 author: "Chao"
-date: "2022-08-27"
+date: "2022-09-11"
 categories: ["tips", "data science", "python", "jupyter", "rstudio"]
 image: "ZmZEkO-pb7M.jpg"
 ---
@@ -45,6 +45,6 @@ After the set up, the typical workflow works like this:
 2.  Access `vscode` via the `code-server` URL on the login node.
 3.  Submit the `sbatch` script to spin up both `jupyter lab` and `rstudio` servers on the same compute node
 4.  To access `jupyter` and `rstudio` there are two options:
-    1.  VPN
 
+    1.  VPN
     2.  port-forward using SSH or vscode desktop app.

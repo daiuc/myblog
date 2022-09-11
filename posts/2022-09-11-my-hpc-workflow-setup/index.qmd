@@ -3,7 +3,7 @@ title: "My HPC workflow setup"
 author: "Chao"
 date: "2022-08-27"
 categories: ["tips", "data science", "python", "jupyter", "rstudio"]
-image: "https://unsplash.com/photos/ZmZEkO-pb7M"
+image: "ZmZEkO-pb7M.jpg"
 ---
 
 This workflow aims to achive remote data analysis on high performance computing clusters. Main tools involved are:

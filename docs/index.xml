@@ -10,7 +10,35 @@
 <atom:link href="www.ciaodaily.com/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.2.8</generator>
-<lastBuildDate>Sun, 11 Sep 2022 05:00:00 GMT</lastBuildDate>
+<lastBuildDate>Mon, 12 Sep 2022 05:00:00 GMT</lastBuildDate>
+<item>
+  <title>Useful vscode settings</title>
+  <dc:creator>Chao</dc:creator>
+  <link>www.ciaodaily.com/posts/2022-09-12-useful-vscode-settings/index.html</link>
+  <description><![CDATA[ 
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-TRNDW5PZV1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TRNDW5PZV1');
+</script>
+
+
+
+
+<p>…</p>
+
+
+
+ ]]></description>
+  <category>code vscode setup tips</category>
+  <guid>www.ciaodaily.com/posts/2022-09-12-useful-vscode-settings/index.html</guid>
+  <pubDate>Mon, 12 Sep 2022 05:00:00 GMT</pubDate>
+  <media:content url="www.ciaodaily.com/posts/2022-09-12-useful-vscode-settings/EUzk9BIEq6M.jpg" medium="image" type="image/jpeg"/>
+</item>
 <item>
   <title>My HPC workflow setup</title>
   <dc:creator>Chao</dc:creator>

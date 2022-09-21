@@ -11,4 +11,5 @@ _site/**
 /.quarto/
 **test*
 **tmp*
+**/*checkpoint*
 

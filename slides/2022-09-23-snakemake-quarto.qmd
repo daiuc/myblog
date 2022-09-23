@@ -1,0 +1,110 @@
+---
+format: 
+  revealjs:
+    theme: default
+    logo: "UChicago-logo.png"
+    slide-number: true
+    show-slide-number: all
+    center: false
+---
+
+# Sharpen your midway tools {.absolute top="1" background-image="background.jpg" background-opacity="0.2"}
+
+Chao Dai
+
+9/26/22
+
+------------------------------------------------------------------------
+
+## Agenda {background-image="background.jpg" background-opacity="0.1"}
+
+-   Set up midway2/3 environment
+-   Reproducible workflow
+-   Scientific writing with quarto
+-   Publish your project website
+
+------------------------------------------------------------------------
+
+## My midway2 environment {.smaller background-image="code.jpg" background-opacity="0.1"}
+
+-   conda:
+    -   install miniconda to `scratch`
+
+    -   set up env: e.g. smk - binaries and packages, e.g. R, python, jupyter, snakemake
+-   analyses:
+    -   jupyter lab
+
+    -   Rstudio & R via singularity
+
+    -   Custom start-up script to launch jupyter lab and rstudio in a compute node
+-   shell config
+    -   zsh/bash profile (`PATH`)
+
+    -   `.R.environ`
+
+    -   vscode / code-server + extensions
+
+------------------------------------------------------------------------
+
+## My HPC environment demo {background-image="code.jpg" background-opacity="0.1"}
+
+------------------------------------------------------------------------
+
+## Reproducible pipeline {background-image="sand.jpg" background-opacity="0.2"}
+
+-   cookiecutter - set up project skeleton
+-   snakemake: manage workflow
+-   quarto: data analysis and plots
+
+------------------------------------------------------------------------
+
+## Reproducible pipeline - demo {background-image="sand.jpg" background-opacity="0.2"}
+
+1.  use cookiecutter to create a snakemake-quarto repository
+2.  run a simple snakemake rule
+    -   config profiles
+    -   config yaml
+    -   conda environment
+3.  demo a real project
+
+------------------------------------------------------------------------
+
+## Scientific writing with quarto {background-image="pen.jpg" background-opacity="0.1"}
+
+Benefits:
+
+::: columns
+::: {.column width="50%"}
+-   write in markdown instead of LaTeX
+-   cross reference
+-   integration with citation manager such as zotero
+-   table/figure generation via code chunks
+-   publish to github page
+:::
+
+::: {.column width="50%"}
+-   fully compatible with pandoc
+-   simultaneously output to multiple format (html, pdf, docx, etc.)
+-   fully extensible with html / latex should you need finer control
+:::
+:::
+
+------------------------------------------------------------------------
+
+## Scientific writing - quick demo {background-image="pen.jpg" background-opacity="0.1"}
+
+------------------------------------------------------------------------
+
+## Set up your project website {background-image="bulbs.jpg" background-opacity="0.2"}
+
+Benefits:
+
+-   document your project progression
+-   organize your notes (use Notion)
+-   share and communicate your results
+
+------------------------------------------------------------------------
+
+## Set up your project website - demo {background-image="bulbs.jpg" background-opacity="0.2"}
+
+[Kas-seq site](http://daiuc.github.io/kas-seq)

@@ -28,6 +28,13 @@
     "text": "code-server\nsingularity and docker image\nsnakemake\nconda\n\n\nSet up code-server\nThe purpose of code-server is to enable remote development. Once set up, you can run vscode from browser.\n\n\nconda and snakemake\nInstall conda to create appropriate environment. For instance, I created a smk environment and installed python 3.9, jupyterlab, r-base 4.1.0 and snakemake 6.12.3\n\n\nsingularity and docker image\nI built a docker image on my mac based on the rocker/rstudio docker image. Because docker requires root, it is not available on HPCs. Thus I built a sif image using singularity (now rebranded as apptainer). The purpose of this container is to run my own rstudio server on HPC.\nI used singularity to bind $HOME and scratch directory. When running the container, instead of using the r binary in the container, I used the r binary in smk environment. This ensures that rstudio run in the container leverages the same R and R library.\n\n\nStart rstudio-server and jupyter lab\nIn a sbatch script, I essentially run these commands:\n\nfirst, activate smk environment\nsecond, start jupyter lab, note this is run directly on compute node\nfinally, start singularity container and run rstudio. Note rstudio is run inside a container on the compute node\n\nNote, since compute node is behind firewall, I need to access jupyter and rstudio servers via VPN or port forwarding.\n\n\nTypical workflow\nAfter the set up, the typical workflow works like this:\n\nSSH into login node, and spin up code-server. Note this step is no longer required once the server is up and running.\nAccess vscode via the code-server URL on the login node.\nSubmit the sbatch script to spin up both jupyter lab and rstudio servers on the same compute node\nTo access jupyter and rstudio there are two options:\n\nVPN\nport-forward using SSH or vscode desktop app."
   },
   {
+    "objectID": "posts/2022-09-12-useful-vscode-settings/index.html",
+    "href": "posts/2022-09-12-useful-vscode-settings/index.html",
+    "title": "Useful vscode settings",
+    "section": "",
+    "text": "…"
+  },
+  {
     "objectID": "posts/welcome/index.html",
     "href": "posts/welcome/index.html",
     "title": "Welcome To My Blog",
@@ -49,10 +56,66 @@
     "text": "Header 2"
   },
   {
-    "objectID": "posts/2022-09-12-useful-vscode-settings/index.html",
-    "href": "posts/2022-09-12-useful-vscode-settings/index.html",
-    "title": "Useful vscode settings",
-    "section": "",
-    "text": "…"
+    "objectID": "slides/2022-09-23-snakemake-quarto.html#agenda",
+    "href": "slides/2022-09-23-snakemake-quarto.html#agenda",
+    "title": "Ciao Chao",
+    "section": "Agenda",
+    "text": "Agenda\n\nSet up midway2/3 environment\nReproducible workflow\nScientific writing with quarto\nPublish your project website"
+  },
+  {
+    "objectID": "slides/2022-09-23-snakemake-quarto.html#my-midway2-environment",
+    "href": "slides/2022-09-23-snakemake-quarto.html#my-midway2-environment",
+    "title": "Ciao Chao",
+    "section": "My midway2 environment",
+    "text": "My midway2 environment\n\nconda:\n\ninstall miniconda to scratch\nset up env: e.g. smk - binaries and packages, e.g. R, python, jupyter, snakemake\n\nanalyses:\n\njupyter lab\nRstudio & R via singularity\nCustom start-up script to launch jupyter lab and rstudio in a compute node\n\nshell config\n\nzsh/bash profile (PATH)\n.R.environ\nvscode / code-server + extensions"
+  },
+  {
+    "objectID": "slides/2022-09-23-snakemake-quarto.html#my-hpc-environment-demo",
+    "href": "slides/2022-09-23-snakemake-quarto.html#my-hpc-environment-demo",
+    "title": "Ciao Chao",
+    "section": "My HPC environment demo",
+    "text": "My HPC environment demo"
+  },
+  {
+    "objectID": "slides/2022-09-23-snakemake-quarto.html#reproducible-pipeline",
+    "href": "slides/2022-09-23-snakemake-quarto.html#reproducible-pipeline",
+    "title": "Ciao Chao",
+    "section": "Reproducible pipeline",
+    "text": "Reproducible pipeline\n\ncookiecutter - set up project skeleton\nsnakemake: manage workflow\nquarto: data analysis and plots"
+  },
+  {
+    "objectID": "slides/2022-09-23-snakemake-quarto.html#reproducible-pipeline---demo",
+    "href": "slides/2022-09-23-snakemake-quarto.html#reproducible-pipeline---demo",
+    "title": "Ciao Chao",
+    "section": "Reproducible pipeline - demo",
+    "text": "Reproducible pipeline - demo\n\nuse cookiecutter to create a snakemake-quarto repository\nrun a simple snakemake rule\n\nconfig profiles\nconfig yaml\nconda environment\n\ndemo a real project"
+  },
+  {
+    "objectID": "slides/2022-09-23-snakemake-quarto.html#scientific-writing-with-quarto",
+    "href": "slides/2022-09-23-snakemake-quarto.html#scientific-writing-with-quarto",
+    "title": "Ciao Chao",
+    "section": "Scientific writing with quarto",
+    "text": "Scientific writing with quarto\nBenefits:\n\n\n\nwrite in markdown instead of LaTeX\ncross reference\nintegration with citation manager such as zotero\ntable/figure generation via code chunks\npublish to github page\n\n\n\nfully compatible with pandoc\nsimultaneously output to multiple format (html, pdf, docx, etc.)\nfully extensible with html / latex should you need finer control"
+  },
+  {
+    "objectID": "slides/2022-09-23-snakemake-quarto.html#scientific-writing---quick-demo",
+    "href": "slides/2022-09-23-snakemake-quarto.html#scientific-writing---quick-demo",
+    "title": "Ciao Chao",
+    "section": "Scientific writing - quick demo",
+    "text": "Scientific writing - quick demo"
+  },
+  {
+    "objectID": "slides/2022-09-23-snakemake-quarto.html#set-up-your-project-website",
+    "href": "slides/2022-09-23-snakemake-quarto.html#set-up-your-project-website",
+    "title": "Ciao Chao",
+    "section": "Set up your project website",
+    "text": "Set up your project website\nBenefits:\n\ndocument your project progression\norganize your notes (use Notion)\nshare and communicate your results"
+  },
+  {
+    "objectID": "slides/2022-09-23-snakemake-quarto.html#set-up-your-project-website---demo",
+    "href": "slides/2022-09-23-snakemake-quarto.html#set-up-your-project-website---demo",
+    "title": "Ciao Chao",
+    "section": "Set up your project website - demo",
+    "text": "Set up your project website - demo\nKas-seq site"
   }
 ]

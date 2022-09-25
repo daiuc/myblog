@@ -2,8 +2,8 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/2022-09-25-my-hpc-workflow-setup/index.html",
       "/posts/2022-09-12-useful-vscode-settings/index.html",
-      "/posts/2022-09-11-my-hpc-workflow-setup/index.html",
       "/posts/2022-09-10-tmux-zsh-vim-setup/index.html",
       "/posts/welcome/index.html"
     ]

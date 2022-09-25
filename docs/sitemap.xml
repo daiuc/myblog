@@ -2,30 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>www.ciaodaily.com/about.html</loc>
-    <lastmod>2022-09-23T19:47:09.519Z</lastmod>
+    <lastmod>2022-09-25T21:28:35.220Z</lastmod>
   </url>
   <url>
     <loc>www.ciaodaily.com/index.html</loc>
-    <lastmod>2022-09-23T19:47:10.052Z</lastmod>
+    <lastmod>2022-09-25T21:36:47.408Z</lastmod>
   </url>
   <url>
     <loc>www.ciaodaily.com/posts/2022-09-10-tmux-zsh-vim-setup/index.html</loc>
-    <lastmod>2022-09-23T19:47:10.344Z</lastmod>
-  </url>
-  <url>
-    <loc>www.ciaodaily.com/posts/2022-09-11-my-hpc-workflow-setup/index.html</loc>
-    <lastmod>2022-09-23T19:47:10.656Z</lastmod>
+    <lastmod>2022-09-25T21:28:36.029Z</lastmod>
   </url>
   <url>
     <loc>www.ciaodaily.com/posts/2022-09-12-useful-vscode-settings/index.html</loc>
-    <lastmod>2022-09-23T19:47:10.942Z</lastmod>
+    <lastmod>2022-09-25T21:28:36.320Z</lastmod>
+  </url>
+  <url>
+    <loc>www.ciaodaily.com/posts/2022-09-25-my-hpc-workflow-setup/index.html</loc>
+    <lastmod>2022-09-25T21:36:46.986Z</lastmod>
   </url>
   <url>
     <loc>www.ciaodaily.com/posts/welcome/index.html</loc>
-    <lastmod>2022-09-23T19:47:11.317Z</lastmod>
+    <lastmod>2022-09-25T21:28:37.042Z</lastmod>
   </url>
   <url>
     <loc>www.ciaodaily.com/slides/2022-09-23-snakemake-quarto.html</loc>
-    <lastmod>2022-09-23T19:47:11.659Z</lastmod>
+    <lastmod>2022-09-25T21:28:37.343Z</lastmod>
   </url>
 </urlset>

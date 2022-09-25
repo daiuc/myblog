@@ -10,7 +10,201 @@
 <atom:link href="www.ciaodaily.com/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.2.8</generator>
-<lastBuildDate>Mon, 12 Sep 2022 05:00:00 GMT</lastBuildDate>
+<lastBuildDate>Sun, 25 Sep 2022 05:00:00 GMT</lastBuildDate>
+<item>
+  <title>My HPC workflow setup</title>
+  <dc:creator>Chao</dc:creator>
+  <link>www.ciaodaily.com/posts/2022-09-25-my-hpc-workflow-setup/index.html</link>
+  <description><![CDATA[ 
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-TRNDW5PZV1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TRNDW5PZV1');
+</script>
+
+
+
+
+<p>This workflow aims to achieve remote data analysis on high performance computing clusters. Main tools involved are:</p>
+<ul>
+<li><code>code-server</code></li>
+<li><code>singularity</code> and <code>docker</code> image</li>
+<li><code>snakemake</code></li>
+<li><code>conda</code></li>
+</ul>
+<section id="set-up-code-server" class="level3">
+<h3 class="anchored" data-anchor-id="set-up-code-server">Set up code-server</h3>
+<p>The purpose of code-server is to enable remote development. Once set up, you can run <code>vscode</code> from browser.</p>
+<section id="download-code-server-binary" class="level4">
+<h4 class="anchored" data-anchor-id="download-code-server-binary">1. Download code-server binary</h4>
+<p>Download the latest binary from <a href="https://github.com/coder/code-server">code-server github page</a> and install to your preferred local path, e.g.&nbsp;<code>$HOME/bin</code>.</p>
+</section>
+<section id="install-extensions" class="level4">
+<h4 class="anchored" data-anchor-id="install-extensions">2. Install extensions</h4>
+<p>Install desired extensions with <code>code-server --install-extension</code>. Search extensions on <a href="https://open-vsx.org">Open VSX Registry</a>. For example, here are my installed extensions:</p>
+<div class="panel-tabset">
+<ul class="nav nav-tabs"><li class="nav-item"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" aria-controls="tabset-1-1" aria-selected="true"></a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" aria-labelledby="tabset-1-1-tab">
+<pre><code>    akamud.vscode-theme-onelight
+    Ikuyadeu.r
+    ms-python.python
+    ms-toolsai.jupyter
+    ms-toolsai.jupyter-keymap
+    ms-toolsai.jupyter-renderers
+    PKief.material-icon-theme
+    quarto.quarto
+    RDebugger.r-debugger
+    snakemake.snakemake-lang
+    streetsidesoftware.code-spell-checker
+    vscodevim.vim
+    zhuangtongfa.material-theme</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="configurations" class="level4">
+<h4 class="anchored" data-anchor-id="configurations">3. Configurations</h4>
+<p>Configure <code>code-server</code> with a config yaml file at <code>$HOME/.config/code-server/config.yaml</code>.</p>
+<div class="panel-tabset">
+<ul class="nav nav-tabs"><li class="nav-item"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" aria-controls="tabset-2-1" aria-selected="true"></a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" aria-labelledby="tabset-2-1-tab">
+<pre><code>bind-addr: {IP}:{PORT}
+#auth: none
+auth: password
+rashed-password: YOUR-HASHED-PASSWORD
+cert: true
+cert-key: /path/to/your/cert/if/cert/is/set/to/true</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="start-code-server" class="level4">
+<h4 class="anchored" data-anchor-id="start-code-server">4. start code-server</h4>
+<p>Simply start code-server with <code>code-server PATH/TO/YOUR/WORKSPACE</code></p>
+<hr>
+</section>
+</section>
+<section id="conda-and-snakemake" class="level3">
+<h3 class="anchored" data-anchor-id="conda-and-snakemake"><code>conda</code> and <code>snakemake</code></h3>
+<p>Install <code>conda</code> to create appropriate environment. For instance, I created a <code>smk</code> environment and installed <code>python 3.9</code>, <code>jupyterlab</code>, <code>r-base 4.1.0</code> and <code>snakemake 6.12.3</code></p>
+<hr>
+</section>
+<section id="singularity-and-docker-image" class="level3">
+<h3 class="anchored" data-anchor-id="singularity-and-docker-image"><code>singularity</code> and <code>docker</code> image</h3>
+<p>I built a docker image on my mac based on the <a href="https://hub.docker.com/r/rocker/rstudio"><code>rocker/rstudio</code></a> docker image. Because <code>docker</code> requires <code>root</code>, it is not available on HPCs. Thus I built a <code>sif</code> image using <code>singularity</code> (now re-branded as <code>apptainer</code>). The purpose of this container is to run my own <code>rstudio server</code> on HPC.</p>
+<p>I used <code>singularity</code> to bind <code>$HOME</code> and <code>scratch</code> directory. When running the container, instead of using the r binary in the container, I used the r binary in <code>smk</code> environment. This ensures that rstudio run in the container leverages the same R and R library.</p>
+<section id="build-a-sif-from-docker-image" class="level4">
+<h4 class="anchored" data-anchor-id="build-a-sif-from-docker-image">1. Build a sif from docker image</h4>
+<pre><code>singularity pull bajiame/rstudio:R4.1.0-Rstudio554</code></pre>
+</section>
+<section id="create-rstudio-server-temp-directory" class="level4">
+<h4 class="anchored" data-anchor-id="create-rstudio-server-temp-directory">2. Create rstudio server temp directory</h4>
+<p>Rstudio server cache some temp data thus we need to create some directories before running the container. Make sure the following binding paths exist on the host OS.</p>
+<div class="panel-tabset">
+<ul class="nav nav-tabs"><li class="nav-item"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" aria-controls="tabset-3-1" aria-selected="true"></a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1" class="tab-pane active" aria-labelledby="tabset-3-1-tab">
+<pre><code>    --bind $TMPDIR/var/lib:/var/lib/rstudio-server \
+    --bind $TMPDIR/var/run:/var/run/rstudio-server \
+    --bind $TMPDIR/tmp:/tmp \
+    --bind $TMPDIR/database.conf:/etc/rstudio/database.conf \</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="configure-sbatch-scricpt" class="level4">
+<h4 class="anchored" data-anchor-id="configure-sbatch-scricpt">3. Configure sbatch scricpt</h4>
+<p>Configure an sbatch script similar to below.</p>
+<div class="panel-tabset">
+<ul class="nav nav-tabs"><li class="nav-item"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" aria-controls="tabset-4-1" aria-selected="true"></a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1" class="tab-pane active" aria-labelledby="tabset-4-1-tab">
+<pre><code>## set SIF
+SIF="PATH/TO/rstudio_R4.1.0-Rstudio554.sif"
+TMPDIR={YOUR_TEMP_DIR_FOR_RSTUDIO}
+
+# set conda, R, python binary
+CONDA_PREFIX={YOUR_CONDA_ENV_PATH}
+R_BIN=$CONDA_PREFIX/bin/R
+PY_BIN=$CONDA_PREFIX/bin/python
+
+## export conda environment to container
+export SINGULARITYENV_USER={YOUR_USER_NAME}
+export SINGULARITYENV_RSTUDIO_WHICH_R=${R_BIN}
+export SINGULARITYENV_CONDA_PREFIX=${CONDA_PREFIX}
+export SINGULARITYENV_PATH={YOUR_PATHS_TO_APPEND}
+export SINGULARITYENV_CACHEDIR="{YOUR/singularity_cache}"
+
+RSTUDIO_SERVER_USER=chaodai # change to your own
+
+## run container app
+PASSWORD='{CHOSE_YOUR_PASSWORD}' singularity exec \
+    --bind $TMPDIR/var/lib:/var/lib/rstudio-server \
+    --bind $TMPDIR/var/run:/var/run/rstudio-server \
+    --bind $TMPDIR/tmp:/tmp \
+    --bind $TMPDIR/database.conf:/etc/rstudio/database.conf \
+    --bind /sys/fs/cgroup/:/sys/fs/cgroup/:ro \
+    --bind {YOUR_HOME_DIR}:/home/rstudio \
+    --bind /project2/{LAB}:/project2/{LAB} \
+    $SIF \
+    rserver --server-user $RSTUDIO_SERVER_USER \
+        --rsession-which-r=${R_BIN} \
+        --www-port=${RPORT} \
+        --auth-none=0 \
+        --auth-pam-helper-path=pam-helper \
+        --auth-timeout-minutes=0 \
+        --auth-stay-signed-in-days=30 \
+        --secure-cookie-key-file={/CREATE_YOUR/secure-cookie-key}</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="create-compute-node-and-start-container" class="level4">
+<h4 class="anchored" data-anchor-id="create-compute-node-and-start-container">Create compute node and start container</h4>
+<p>Use your sbatch script to request a compute node and start your rstudio server.</p>
+<p>In my <code>sbatch</code> script, I essentially run these commands:</p>
+<ul>
+<li>first, activate <code>smk</code> environment</li>
+<li>second, start <code>jupyter lab</code>, note this is run directly on compute node</li>
+<li>finally, start <code>singularity</code> container and run <code>rstudio</code>. Note <code>rstudio</code> is run inside a container on the compute node</li>
+</ul>
+<p>Note, since compute node is behind firewall, I need to access jupyter and rstudio servers via VPN or port forwarding.</p>
+<hr>
+</section>
+</section>
+<section id="typical-workflow" class="level3">
+<h3 class="anchored" data-anchor-id="typical-workflow">Typical workflow</h3>
+<p>After the set up, the typical workflow works like this:</p>
+<ol type="1">
+<li><p>SSH into login node, and spin up <code>code-server</code>. Note this step is no longer required once the server is up and running.</p></li>
+<li><p>Access <code>vscode</code> via the <code>code-server</code> URL on the login node.</p></li>
+<li><p>Submit the <code>sbatch</code> script to spin up both <code>jupyter lab</code> and <code>rstudio</code> servers on the same compute node</p></li>
+<li><p>To access <code>jupyter</code> and <code>rstudio</code> there are two options:</p>
+<ol type="1">
+<li>VPN</li>
+<li>port-forward using SSH or vscode desktop app.</li>
+</ol></li>
+</ol>
+
+
+</section>
+
+ ]]></description>
+  <category>tips</category>
+  <category>data science</category>
+  <category>python</category>
+  <category>jupyter</category>
+  <category>rstudio</category>
+  <guid>www.ciaodaily.com/posts/2022-09-25-my-hpc-workflow-setup/index.html</guid>
+  <pubDate>Sun, 25 Sep 2022 05:00:00 GMT</pubDate>
+  <media:content url="www.ciaodaily.com/posts/2022-09-25-my-hpc-workflow-setup/ZmZEkO-pb7M.jpg" medium="image" type="image/jpeg"/>
+</item>
 <item>
   <title>Useful vscode settings</title>
   <dc:creator>Chao</dc:creator>
@@ -38,81 +232,6 @@
   <guid>www.ciaodaily.com/posts/2022-09-12-useful-vscode-settings/index.html</guid>
   <pubDate>Mon, 12 Sep 2022 05:00:00 GMT</pubDate>
   <media:content url="www.ciaodaily.com/posts/2022-09-12-useful-vscode-settings/EUzk9BIEq6M.jpg" medium="image" type="image/jpeg"/>
-</item>
-<item>
-  <title>My HPC workflow setup</title>
-  <dc:creator>Chao</dc:creator>
-  <link>www.ciaodaily.com/posts/2022-09-11-my-hpc-workflow-setup/index.html</link>
-  <description><![CDATA[ 
-<!-- Google tag (gtag.js) -->
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-TRNDW5PZV1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-TRNDW5PZV1');
-</script>
-
-
-
-
-<p>This workflow aims to achive remote data analysis on high performance computing clusters. Main tools involved are:</p>
-<ul>
-<li><code>code-server</code></li>
-<li><code>singularity</code> and <code>docker</code> image</li>
-<li><code>snakemake</code></li>
-<li><code>conda</code></li>
-</ul>
-<section id="set-up-code-server" class="level3">
-<h3 class="anchored" data-anchor-id="set-up-code-server">Set up code-server</h3>
-<p>The purpose of code-server is to enable remote development. Once set up, you can run <code>vscode</code> from browser.</p>
-</section>
-<section id="conda-and-snakemake" class="level3">
-<h3 class="anchored" data-anchor-id="conda-and-snakemake"><code>conda</code> and <code>snakemake</code></h3>
-<p>Install <code>conda</code> to create appropriate environment. For instance, I created a <code>smk</code> environment and installed <code>python 3.9</code>, <code>jupyterlab</code>, <code>r-base 4.1.0</code> and <code>snakemake 6.12.3</code></p>
-</section>
-<section id="singularity-and-docker-image" class="level3">
-<h3 class="anchored" data-anchor-id="singularity-and-docker-image"><code>singularity</code> and <code>docker</code> image</h3>
-<p>I built a docker image on my mac based on the <a href="https://hub.docker.com/r/rocker/rstudio"><code>rocker/rstudio</code></a> docker image. Because <code>docker</code> requires <code>root</code>, it is not available on HPCs. Thus I built a <code>sif</code> image using <code>singularity</code> (now rebranded as <code>apptainer</code>). The purpose of this container is to run my own <code>rstudio server</code> on HPC.</p>
-<p>I used <code>singularity</code> to bind <code>$HOME</code> and <code>scratch</code> directory. When running the container, instead of using the r binary in the container, I used the r binary in <code>smk</code> environment. This ensures that rstudio run in the container leverages the same R and R library.</p>
-</section>
-<section id="start-rstudio-server-and-jupyter-lab" class="level3">
-<h3 class="anchored" data-anchor-id="start-rstudio-server-and-jupyter-lab">Start <code>rstudio-server</code> and <code>jupyter lab</code></h3>
-<p>In a <code>sbatch</code> script, I essentially run these commands:</p>
-<ul>
-<li>first, activate <code>smk</code> environment</li>
-<li>second, start <code>jupyter lab</code>, note this is run directly on compute node</li>
-<li>finally, start <code>singularity</code> container and run <code>rstudio</code>. Note <code>rstudio</code> is run inside a container on the compute node</li>
-</ul>
-<p>Note, since compute node is behind firewall, I need to access jupyter and rstudio servers via VPN or port forwarding.</p>
-</section>
-<section id="typical-workflow" class="level3">
-<h3 class="anchored" data-anchor-id="typical-workflow">Typical workflow</h3>
-<p>After the set up, the typical workflow works like this:</p>
-<ol type="1">
-<li><p>SSH into login node, and spin up <code>code-server</code>. Note this step is no longer required once the server is up and running.</p></li>
-<li><p>Access <code>vscode</code> via the <code>code-server</code> URL on the login node.</p></li>
-<li><p>Submit the <code>sbatch</code> script to spin up both <code>jupyter lab</code> and <code>rstudio</code> servers on the same compute node</p></li>
-<li><p>To access <code>jupyter</code> and <code>rstudio</code> there are two options:</p>
-<ol type="1">
-<li>VPN</li>
-<li>port-forward using SSH or vscode desktop app.</li>
-</ol></li>
-</ol>
-
-
-</section>
-
- ]]></description>
-  <category>tips</category>
-  <category>data science</category>
-  <category>python</category>
-  <category>jupyter</category>
-  <category>rstudio</category>
-  <guid>www.ciaodaily.com/posts/2022-09-11-my-hpc-workflow-setup/index.html</guid>
-  <pubDate>Sun, 11 Sep 2022 05:00:00 GMT</pubDate>
-  <media:content url="www.ciaodaily.com/posts/2022-09-11-my-hpc-workflow-setup/ZmZEkO-pb7M.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>Linux terminal set up - zsh, vim, and tmux</title>
